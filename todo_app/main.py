@@ -3,10 +3,13 @@ from datetime import datetime
 from . models import ToDoCreate, ToDo
 from . db import setup_database, get_db
 from typing import List
+from todo_app.routes.todos import router as todos_router
 
 app = FastAPI(title="ToDo API")
 
 setup_database()
+
+app.include_router(todos_router, prefix="/api", tags=["ToDos"])
 
 @app.post("/todos/", response_model=ToDo)
 async def create_todo(todo: ToDoCreate):

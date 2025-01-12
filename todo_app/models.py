@@ -12,3 +12,4 @@ class ToDo(BaseModel):
     description: str
     due_date: str
     created_at: str
+    status: str
